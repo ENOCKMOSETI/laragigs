@@ -16,16 +16,14 @@ use App\Models\Listing;
 
 Route::get('/', function () {
     return view('listings', [
-        'heading' => 'Latest Listings',
         'listings' => Listing::all()
     ]);
 });
 
 
 // Single Listing
-Route::get('/listings/{id}', function ($id) {
+Route::get('/listings/{listing}', function (Listing $listing) {
     return view('listing', [
-        'heading' => 'Listing with id {id}',
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
 });
