@@ -38,6 +38,7 @@ class ListingController extends Controller
             'tags' => 'required',
             'description' => 'required'
         ]);
+        
         Listing::create($formFields);
 
         return redirect('/');
