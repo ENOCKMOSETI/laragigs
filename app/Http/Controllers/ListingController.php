@@ -11,7 +11,7 @@ class ListingController extends Controller
     // Get all Listings
     public function index() {
         return view('listings.index', [
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->cursorPaginate(5)
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4)
         ]);
     }
 
@@ -39,6 +39,10 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
         
+        if($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
         Listing::create($formFields);
 
         return redirect('/')->with('message', 'Listing created successfully');
