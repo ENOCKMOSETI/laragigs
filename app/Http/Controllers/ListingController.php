@@ -86,7 +86,7 @@ class ListingController extends Controller
     public function destroy(Listing $listing) {
 
         if($listing->user_id != auth()->id()) {
-            abort(403, 'Unauthorized Action!')
+            abort(403, 'Unauthorized Action!');
         }
 
         $listing->delete();
