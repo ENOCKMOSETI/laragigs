@@ -19,6 +19,7 @@ use App\Http\Controllers\UserController;
 // All Listings
 Route::get('/', [ListingController::class, 'index']);
 
+
 // Show Create Form
 Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
@@ -33,6 +34,9 @@ Route::put('listings/{listing}', [ListingController::class, 'update'])->middlewa
 
 // Delete Listing
 Route::delete('listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
+
+// Manage Listings
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
 
 // Single Listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
